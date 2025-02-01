@@ -5,15 +5,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}My Blog{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
     {% block extra_head %}{% endblock %}
   </head>
   <body>
     <header>
-      <nav>
+      <nav class="post-controls nav-container">
+        <div class="nav-left">
         <a href="{% url 'post_list' %}">Home</a>
         {% if user.is_authenticated %}
         <a href="{% url 'post_create' %}">New Post</a>
+        {% endif %}
+    </div>
+    <div class="nav-right">
+        {% if user.is_authenticated %}
         <form action="{% url 'logout' %}" method="post" style="display: inline">
           {% csrf_token %}
           <button type="submit">Logout</button>
