@@ -1,0 +1,159 @@
+/* styles.css */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #5580b1;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: auto; /* Center the container horizontally */
+  flex: 1; /* Allow container to grow and push footer down */
+}
+
+header {
+  background-color: #e0e0e0;
+  padding: 10px 0;
+  width: 100%;
+  position: fixed; /* Fixed position at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav a,
+nav button {
+  color: #555;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+nav a:hover,
+nav button:hover {
+  color: #000;
+  background-color: #d0d0d0;
+}
+
+main {
+  background-color: #73a9d4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 60px; /* Space for the fixed header */
+  margin-bottom: 20px; /* Space for footer */
+}
+
+.post {
+  background-color: #dbd1d1; /* Very light grey for posts */
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background-color: #e0e0e0;
+  color: #666;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  /* Position footer at the bottom */
+  margin-top: auto;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .container {
+    width: 95%;
+  }
+}
+
+.page-title {
+  text-align: center;
+  color: #222;
+  margin-bottom: 30px;
+}
+
+.post-item {
+  background-color: #fafafa;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.post-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.post-title {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.post-title a {
+  text-decoration: none;
+  color: #333; /* Match the title color to make it less link-like */
+}
+
+.post-title a:hover {
+  color: #000;
+  text-decoration: underline; /* Optional: underline on hover for link indication */
+}
+
+.post-meta {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+}
+
+.post-excerpt {
+  color: #555;
+}
+
+.post-controls {
+  margin-top: 10px;
+}
+
+.post-controls a {
+  margin-right: 10px;
+  color: #777; /* A lighter color for controls */
+  text-decoration: none;
+}
+
+.post-controls a:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+.post-tags {
+  margin: 10px 0;
+}
+
+.post-tags span {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.post-tags span:hover {
+  background-color: #d0d0d0;
+}

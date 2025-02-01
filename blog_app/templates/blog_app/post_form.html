@@ -1,0 +1,18 @@
+{% extends "blog_app/base.html" %}
+<!-- prettier-ignore -->
+{% block title %}
+{% if form.instance.pk %}
+Edit Post
+{% else %}
+    Create New Post
+{% endif %}
+{% endblock %} 
+{% block content %}
+<h1>{% if form.instance.pk %}Edit Post{% else %}Create New Post{% endif %}</h1>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Save</button>
+</form>
+<br />
+<button onclick="location.href='{% url 'post_list' %}'">Back to Home</button>
+{% endblock %}
