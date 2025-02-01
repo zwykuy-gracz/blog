@@ -12,9 +12,10 @@
   <span>No tags</span>
   {% endfor %}
 </p>
-<div>
-  <div>{{ post.content|linebreaks }}</div>
 
+<div class="post-content">{{ post.content|linebreaks }}</div>
+
+<div class="post-controls">
   {% if user.is_authenticated and user == post.author %}
   <a href="{% url 'post_edit' post.pk %}">Edit</a> |
   <a
@@ -26,5 +27,8 @@
 
   <br />
   <a href="{% url 'post_list' %}">Back to List</a>
-  {% endblock %}
 </div>
+{% endblock %} {% block extra_head %} {{ block.super }}
+<!-- If you need to support additional languages, include them here -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+{% endblock %}

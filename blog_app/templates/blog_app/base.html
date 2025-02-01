@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}My Blog{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css" rel="stylesheet" />
     {% block extra_head %}{% endblock %}
   </head>
   <body>
@@ -37,5 +38,8 @@
     <footer>
       <p>&copy; 2023 My Blog</p>
     </footer>
+    {% block extra_js %}
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    {% endblock %}
   </body>
 </html>
