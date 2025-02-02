@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
-from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from django.db.models import Q
 from markdown import markdown
 from .models import Post, Tag
-from .forms import PostForm, UserRegisterForm
+from .forms import PostForm, UserRegisterForm, SearchForm
 
 
 """
@@ -30,15 +31,28 @@ class LogoutView(auth_views.LogoutView):
 
 
 def post_list(request):
+    form = SearchForm(request.GET or None)
     # posts = Post.objects.filter(published_date__isnull=False).order_by("published_date")
     posts = Post.objects.order_by("published_date")
     tags = Tag.objects.all()
-    return render(request, "blog_app/post_list.html", {"posts": posts, "tags": tags})
+
+    if form.is_valid() and form.cleaned_data["query"]:
+        query = form.cleaned_data["query"]
+        posts = posts.filter(Q(title__icontains=query) | Q(content__icontains=query))
+    return render(
+        request,
+        "blog_app/post_list.html",
+        {
+            "posts": posts,
+            "tags": tags,
+            "form": form,
+        },
+    )
 
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    # post.content = markdown(post.content, extensions=["fenced_code"])
+    post.content = markdown(post.content, extensions=["fenced_code"])
     return render(request, "blog_app/post_detail.html", {"post": post})
 
 

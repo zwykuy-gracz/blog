@@ -532,3 +532,35 @@ footer {
 .nav-right span {
   color: #555;
 }
+
+.nav-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px; /* Add some space from sides */
+}
+
+.nav-center form {
+  display: flex;
+}
+
+.nav-center input[type="text"] {
+  width: 200px; /* Adjust as needed */
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.nav-center button {
+  padding: 5px 10px;
+  background-color: #d0d0d0;
+  border: none;
+  border-radius: 3px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.nav-center button:hover {
+  background-color: #b0b0b0;
+}
