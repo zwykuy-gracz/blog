@@ -27,6 +27,10 @@ class PostForm(forms.ModelForm):
                 attrs={"type": "datetime-local"}
             )
 
+    published_date = forms.DateField(
+        widget=forms.DateInput(attrs={"class": "form-control", "type": "date"})
+    )
+
 
 class SearchForm(forms.Form):
     query = forms.CharField(max_length=100, label="Search")

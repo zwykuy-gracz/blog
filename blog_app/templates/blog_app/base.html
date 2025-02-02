@@ -45,7 +45,6 @@
           <span>Hi, {{ user.username }}!</span>
           {% else %}
           <a href="{% url 'login' %}">Login</a>
-          <a href="{% url 'register' %}">Register</a>
           {% endif %}
         </div>
       </nav>
@@ -54,9 +53,6 @@
     <div class="container">
       <main class="main-content">{% block content %} {% endblock %}</main>
     </div>
-    <footer>
-      <p>&copy; 2023 My Blog</p>
-    </footer>
     {% block extra_js %}
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
     <script src="{% static 'js/prism.js' %}"></script>
