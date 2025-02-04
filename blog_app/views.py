@@ -10,13 +10,6 @@ from .models import Post, Tag
 from .forms import PostForm, UserRegisterForm, SearchForm
 
 
-"""
-TODO
-No register avaible
-hacker theme
-"""
-
-
 class RegisterView(CreateView):
     form_class = UserRegisterForm
     template_name = "registration/register.html"
@@ -45,7 +38,7 @@ def post_list(request):
     else:
         posts = all_posts
 
-    paginator = Paginator(posts, 3)
+    paginator = Paginator(posts, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
