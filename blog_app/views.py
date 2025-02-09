@@ -5,7 +5,6 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.core.paginator import Paginator
-from markdown import markdown
 from .models import Post, Tag
 from .forms import PostForm, UserRegisterForm, SearchForm
 
@@ -55,7 +54,6 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post.content = markdown(post.content, extensions=["fenced_code"])
     return render(request, "blog_app/post_detail.html", {"post": post})
 
 
