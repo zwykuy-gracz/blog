@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from markdown import markdown
 from .models import Post, Tag
-from .forms import PostForm, UserRegisterForm, SearchForm
+from .forms import PostForm, TagForm, UserRegisterForm, SearchForm
 
 
 class RegisterView(CreateView):
@@ -109,3 +109,16 @@ def tag_posts(request, tag_id):
     return render(
         request, "blog_app/post_list.html", {"posts": posts, "tags": Tag.objects.all()}
     )
+
+
+@login_required
+def tag_create(request):
+    if request.method == "POST":
+        form = TagForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect("post_list")
+    else:
+        form = TagForm()
+    return render(request, "blog_app/tag_form.html", {"form": form})
